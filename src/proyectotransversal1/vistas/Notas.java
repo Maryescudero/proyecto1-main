@@ -116,6 +116,7 @@ private void cargarNotaPorAlumno(){ // esta bien
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(149, 138, 131));
+        jPanel1.setPreferredSize(new java.awt.Dimension(880, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Algerian", 2, 48)); // NOI18N
@@ -124,14 +125,14 @@ private void cargarNotaPorAlumno(){ // esta bien
 
         jLabel2.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         jLabel2.setText("Seleccione un Alumno : ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
         jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbAlumnosActionPerformed(evt);
             }
         });
-        jPanel1.add(jcbAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 210, 30));
+        jPanel1.add(jcbAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 340, 30));
 
         jtNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,7 +147,7 @@ private void cargarNotaPorAlumno(){ // esta bien
         ));
         jScrollPane1.setViewportView(jtNotas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 700, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 700, 270));
 
         jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jbGuardar.setText("GUARDAR");
@@ -156,7 +157,7 @@ private void cargarNotaPorAlumno(){ // esta bien
                 jbGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 150, 50));
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 150, 50));
 
         jbExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         jbExit.setText("SALIR");
@@ -166,12 +167,12 @@ private void cargarNotaPorAlumno(){ // esta bien
                 jbExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jbExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, 150, 50));
+        jPanel1.add(jbExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 150, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-actualizar-94.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 100, 130));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 100, 130));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 550));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

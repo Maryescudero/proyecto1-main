@@ -18,26 +18,49 @@ public class MateriaData {
    public MateriaData(){
        con = Conexion.getConexion();
    }
-   public void agregarMateria(Materia materia){ //agrego materia
-        try {
-            String sql = " INSERT INTO materia (nombre, año,estado) VALUES (?,?,?) ";
-            PreparedStatement ps = con.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1,materia.getNombre());
-            ps.setInt(2,materia.getAnioMateria());
-            ps.setBoolean(3, true);
-             ps.executeUpdate();
-            ResultSet rs= ps.getGeneratedKeys();
+//   public void agregarMateria(Materia materia){ //agrego materia
+//        try {
+//            String sql = " INSERT INTO materia (nombre, año,estado) VALUES (?,?,?) ";
+//            PreparedStatement ps = con.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setString(1,materia.getNombre());
+//            ps.setInt(2,materia.getAnioMateria());
+//            ps.setBoolean(3, true);
+//             ps.executeUpdate();
+//            ResultSet rs= ps.getGeneratedKeys();
+//            if (rs.next()) {
+//                materia.getIdMateria();
+//                JOptionPane.showMessageDialog(null,"Materia Agregado exitosamente");
+//            }
+//            ps.close();
+//        
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,"Error al conectar con la tabla materia " + ex.getMessage());
+//        }
+//
+//}
+   
+   public void agregarMateria(Materia materia) {
+    try {
+        String sql = "INSERT INTO materia (nombre, año, estado) VALUES (?,?,?)";
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, materia.getNombre());
+        ps.setInt(2, materia.getAnioMateria());
+        ps.setBoolean(3, true);
+        int rowsAffected = ps.executeUpdate();
+        if (rowsAffected > 0) {
+            ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                materia.getIdMateria();
-                JOptionPane.showMessageDialog(null,"Materia Agregado exitosamente");
+                int generatedId = rs.getInt(1);
+                materia.setIdMateria(generatedId); // Asignar el ID generado a la instancia de Materia
+                JOptionPane.showMessageDialog(null, "Materia Agregada exitosamente con ID: " + generatedId);
             }
-            ps.close();
-        
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al conectar con la tabla inscripcion " + ex.getMessage());
         }
-
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al conectar con la tabla materia" + ex.getMessage());
+    }
 }
+   
    public void modificarMateria(int idMateria,int año){ // modifico materia
        String sql= "UPDATE materia SET año =? "
                + " WHERE idMateria = ? ";

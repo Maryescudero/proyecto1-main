@@ -91,7 +91,7 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
                 jbAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 210, 50));
+        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 210, 50));
 
         jBExit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         jBExit1.setText("SALIR");
@@ -101,7 +101,7 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
                 jBExit1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jBExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, 210, 50));
+        jPanel1.add(jBExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 210, 50));
 
         jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-lupa-30.png"))); // NOI18N
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
                 jbEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 210, 50));
+        jPanel1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 210, 50));
         jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, 30, 30));
         jPanel1.add(jdFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 150, 40));
 
@@ -127,11 +127,11 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 957, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -180,7 +180,6 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
             alumActual.setApellido(apellido);
             alumActual.setNombre(nombre);
             alumActual.setFechaNac(fechaNac);
-            alumActual.setEstado(true);
             alumData.modificarAlumno(alumActual);
         }
         limpiarCampos();

@@ -17,6 +17,7 @@ public class ConsultaAlumnosMateria extends javax.swing.JInternalFrame {
     
     private ArrayList<Materia> listmat; // me muestra las materias
     private ArrayList<Alumno> listalum; // me muestra los alumnos
+    private ArrayList<Inscripcion>listinsc;
 
     private AlumnoData alumData;
     private MateriaData matData;
@@ -32,8 +33,10 @@ public ConsultaAlumnosMateria() {
         alumData= new AlumnoData(); // inicializo 
         listalum= (ArrayList<Alumno>)alumData.listarAlumnos();
         modelo = new DefaultTableModel();
-        matData = new MateriaData();
+        matData = new MateriaData(); // inicializo
         listmat = (ArrayList<Materia>) matData.listarMateriasActivas(); 
+        inscData = new InscripcionData(); // Inicializa inscData
+        listinsc = (ArrayList<Inscripcion>) inscData.obtenerInscipciones();
         armarCabecera();
         cargarMateria();
 }
@@ -61,16 +64,40 @@ public ConsultaAlumnosMateria() {
         }
     }
 
-private void cargarAlumnosPorMateria() {
-borrarFilaTabla();
+     private void cargarAlumnosPorMateria() {
+    borrarFilaTabla();
     Materia selectedMateria = (Materia) jcbMateria.getSelectedItem();
+    
     if (selectedMateria != null) {
-        ArrayList<Alumno> alumnos = (ArrayList<Alumno>) inscData.obternerAlumnoPorMateria(selectedMateria.getIdMateria());
+        int idMateria = selectedMateria.getIdMateria();
+        ArrayList<Alumno> alumnos = new ArrayList<>();
+        
+        for (Alumno alumno : listalum) {
+            int idAlumno = alumno.getIdAlumno();
+            boolean alumnoInscrito = false;
+            
+           
+            for (Inscripcion inscripcion : listinsc) {
+                if (inscripcion.getAlumno().getIdAlumno()== idAlumno && inscripcion.getMateria().getIdMateria() == idMateria) {
+                    alumnoInscrito = true;
+                    break;
+                }
+            }
+            
+            if (alumnoInscrito) {
+                alumnos.add(alumno);
+            }
+        }
+        
         for (Alumno alumno : alumnos) {
             modelo.addRow(new Object[]{alumno.getIdAlumno(), alumno.getDni(), alumno.getApellido(), alumno.getNombre()});
         }
     }
 }
+     
+     
+     
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,6 +116,7 @@ borrarFilaTabla();
         jTAlumnos = new javax.swing.JTable();
         jbExit = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(952, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(214, 187, 165));
@@ -100,14 +128,14 @@ borrarFilaTabla();
 
         jLabel2.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         jLabel2.setText("Seleccione una Materia : ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 106, 240, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 240, 40));
 
         jcbMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbMateriaActionPerformed(evt);
             }
         });
-        jPanel1.add(jcbMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 400, 30));
+        jPanel1.add(jcbMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 400, 30));
 
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,7 +150,7 @@ borrarFilaTabla();
         ));
         jScrollPane1.setViewportView(jTAlumnos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 760, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 760, 260));
 
         jbExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         jbExit.setText("SALIR");
@@ -132,7 +160,7 @@ borrarFilaTabla();
                 jbExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jbExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, 150, 40));
+        jPanel1.add(jbExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 150, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 550));
 
