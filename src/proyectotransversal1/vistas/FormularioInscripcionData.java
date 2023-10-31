@@ -261,6 +261,8 @@ public class FormularioInscripcionData extends javax.swing.JInternalFrame {
             Inscripcion ins = new Inscripcion(0, a, m);
             inscData.guardarInscripcion(ins);
             borrarFilaTabla();
+        }else{
+            JOptionPane.showMessageDialog(this,"DEBE SELECCIONAR UNA FILA");
         }
     }//GEN-LAST:event_jbAgregarActionPerformed
 
@@ -295,7 +297,7 @@ private void armarCabecera(){
 }
  private void borrarFilaTabla(){
     int indice = modelo.getRowCount()-1;
-     for (int i = indice; i>=0; i++) { // hacemos una interaccion y removiendo 
+     for (int i = indice; i>=0; i--) { // hacemos una interaccion y removiendo 
      modelo.removeRow(i);
          
      }

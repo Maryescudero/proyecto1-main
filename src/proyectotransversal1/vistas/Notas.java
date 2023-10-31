@@ -84,16 +84,6 @@ public class Notas extends javax.swing.JInternalFrame {
         }
     }
     
-private void cargarNotaPorAlumno(){ // esta bien
-    Alumno selec =(Alumno) jcbAlumnos.getSelectedItem();
-      ArrayList<Materia>arrayList=(ArrayList<Materia>) inscData.obternerMateriaCursadas(selec.getIdAlumno());
-     for (Materia m : arrayList) {
-         modelo.addRow(new Object[] { m.getIdMateria(), m.getNombre(), insc});
-     }
-}
-
-   
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -187,7 +177,7 @@ private void cargarNotaPorAlumno(){ // esta bien
                if (filaSelecc != -1) {
                    Alumno a = (Alumno) jcbAlumnos.getSelectedItem();
                    int idMateria =(Integer)modelo.getValueAt(filaSelecc,0);
-                   double nota = (Double)modelo.getValueAt(filaSelecc,2);
+                   double nota = Double.parseDouble((String)modelo.getValueAt(filaSelecc,2));
             inscData.modificarNotas(a.getIdAlumno(), idMateria, nota);
             borrarFilaTabla();
         }else{

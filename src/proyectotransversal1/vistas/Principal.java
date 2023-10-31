@@ -77,7 +77,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIngresarActionPerformed
         if (jtfUsuario.getText().equals("usuario") && jpfPassword.getText().equals("1234")) {
-         General menu= new General();
+         General menu = new General();
          menu.setVisible(true);
         } else {
             

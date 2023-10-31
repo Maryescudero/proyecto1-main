@@ -31,6 +31,7 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -163,6 +164,8 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+        try {
+            
         Integer dni = Integer.parseInt(jtDni.getText());
         String apellido = jtApellido.getText();
         String nombre = jtNombre.getText();
@@ -182,6 +185,11 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
             alumActual.setFechaNac(fechaNac);
             alumData.modificarAlumno(alumActual);
         }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Debe ingresar solo  números");
+        }
+        
+        
         limpiarCampos();
         
         
@@ -207,6 +215,7 @@ public class FormularioAlumnoData extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBExit1;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
